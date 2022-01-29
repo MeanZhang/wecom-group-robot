@@ -11,14 +11,16 @@ inputs:
   # 暂不支持图片和图文
   msgtype:
     description: "消息类型，支持文本（text）、markdown（markdown）、图片（image）、图文（news）、文件（file）"
-    required: true
+    required: false
     default: "text"
   content:
     description: "消息内容，当消息类型为文件（file）时，content为文件名"
     required: true
 outputs:
-  errcode: # output will be available to future steps
+  errcode:
     description: "企业微信返回的errcode"
+  errmsg:
+    description: "企业微信返回的errmsg"
 runs:
   using: "node12"
   main: "dist/index.js"

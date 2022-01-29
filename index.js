@@ -55,7 +55,9 @@ async function run() {
     axios.post(url, params).then((response) => {
       if (response.data.errcode === 0) {
         core.setOutput("errcode", 0);
+        core.setOutput("errmsg",response.data.errmsg)
       } else {
+        core.debug(response.data);
         core.setFailed(response.data);
       }
     });

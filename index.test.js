@@ -1,24 +1,46 @@
-const wait = require('./wait');
-const process = require('process');
-const cp = require('child_process');
-const path = require('path');
+const process = require("process");
+const cp = require("child_process");
+const path = require("path");
+const fs = require("fs");
 
-test('throws invalid number', async () => {
-  await expect(wait('foo')).rejects.toThrow('milliseconds not a number');
-});
+process.env["INPUT_KEY"] = process.env["TEST_KEY"];
 
-test('wait 500 ms', async () => {
-  const start = new Date();
-  await wait(500);
-  const end = new Date();
-  var delta = Math.abs(end - start);
-  expect(delta).toBeGreaterThanOrEqual(500);
-});
-
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  process.env['INPUT_MILLISECONDS'] = 100;
-  const ip = path.join(__dirname, 'index.js');
-  const result = cp.execSync(`node ${ip}`, {env: process.env}).toString();
+test("测试文本", () => {
+  process.env["INPUT_MSGTYPE"] = "text";
+  process.env["INPUT_CONTENT"] = "文本测试\n" + new Date().toTimeString();
+  const ip = path.join(__dirname, "index.js");
+  const result = cp.execSync(`node ${ip}`, { env: process.env }).toString();
   console.log(result);
-})
+});
+
+test("测试 Markdown", () => {
+  process.env["INPUT_MSGTYPE"] = "markdown";
+  process.env["INPUT_CONTENT"] =
+    "### Markdown 测试\n" + new Date().toTimeString();
+  const ip = path.join(__dirname, "index.js");
+  const result = cp.execSync(`node ${ip}`, { env: process.env }).toString();
+  console.log(result);
+});
+
+test("测试文件", () => {
+  process.env["INPUT_MSGTYPE"] = "file";
+  const filename = "testfile-" + getTimeString() + ".md";
+  fs.writeFileSync(filename, "### Markdown 测试\n" + new Date().toTimeString());
+  process.env["INPUT_CONTENT"] = filename;
+  const ip = path.join(__dirname, "index.js");
+  const result = cp.execSync(`node ${ip}`, { env: process.env }).toString();
+  console.log(result);
+  fs.unlinkSync(filename)
+});
+
+function getTimeString() {
+  const time = new Date();
+  return (
+    time.getFullYear().toString() +
+    (time.getMonth() + 1).toString().padStart(2, "0") +
+    time.getDate().toString().padStart(2, "0") +
+    time.getHours().toString().padStart(2, "0") +
+    time.getMinutes().toString().padStart(2, "0") +
+    time.getSeconds().toString().padStart(2, "0")
+  );
+}

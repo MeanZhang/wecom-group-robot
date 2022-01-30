@@ -17,6 +17,8 @@ jobs:
       - run: npm test
         env:
           TEST_KEY: ${{ secrets.TEST_KEY }}
+      # 上传到codecov
+      - uses: codecov/codecov-action@v2
 
   # test action works running from the graph
   test:

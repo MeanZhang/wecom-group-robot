@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
-  "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "name": "wecom-group-robot",
+  "version": "1.0.1",
+  "description": "Send a message through a WeCom group robot from GitHub Actions.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",

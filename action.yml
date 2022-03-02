@@ -1,11 +1,26 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: "WeCom (WeChat Work) Group Robot"
+author: "Mean <390602272@qq.com>"
+description: "Send a message through a WeCom group robot."
+branding:
+  icon: "message-circle"
+  color: "green"
 inputs:
-  milliseconds: # change this
+  key:
+    description: "机器人的key"
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  # 暂不支持图片和图文
+  msgtype:
+    description: "消息类型，支持文本（text）、markdown（markdown）、图片（image）、图文（news）、文件（file）"
+    required: false
+    default: "text"
+  content:
+    description: "消息内容，当消息类型为文件（file）时，content为文件名"
+    required: true
+outputs:
+  errcode:
+    description: "企业微信返回的errcode"
+  errmsg:
+    description: "企业微信返回的errmsg"
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"

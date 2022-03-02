@@ -1,29 +1,81 @@
-import {wait} from '../src/wait'
-import * as process from 'process'
-import * as cp from 'child_process'
-import * as path from 'path'
+import fs from 'fs'
 import {expect, test} from '@jest/globals'
+import {run} from '../src/main'
 
-test('throws invalid number', async () => {
-  const input = parseInt('foo', 10)
-  await expect(wait(input)).rejects.toThrow('milliseconds not a number')
+process.env['INPUT_KEY'] = process.env['TEST_KEY']
+
+test('测试文本', () => {
+  process.env['INPUT_MSGTYPE'] = 'text'
+  process.env['INPUT_CONTENT'] = '文本测试\n' + new Date().toTimeString()
+  return run().then(out => {
+    expect(out.errcode).toBe(0)
+  })
 })
 
-test('wait 500 ms', async () => {
-  const start = new Date()
-  await wait(500)
-  const end = new Date()
-  var delta = Math.abs(end.getTime() - start.getTime())
-  expect(delta).toBeGreaterThan(450)
+test('测试 Markdown', () => {
+  process.env['INPUT_MSGTYPE'] = 'markdown'
+  process.env['INPUT_CONTENT'] =
+    '### Markdown 测试\n' + new Date().toTimeString()
+  return run().then(out => {
+    expect(out.errcode).toBe(0)
+  })
 })
 
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  process.env['INPUT_MILLISECONDS'] = '500'
-  const np = process.execPath
-  const ip = path.join(__dirname, '..', 'lib', 'main.js')
-  const options: cp.ExecFileSyncOptions = {
-    env: process.env
-  }
-  console.log(cp.execFileSync(np, [ip], options).toString())
+test('测试图片', () => {
+  process.env['INPUT_MSGTYPE'] = 'image'
+  process.env['INPUT_CONTENT'] = 'test.png'
+  return run().then(out => {
+    expect(out.errcode).toBe(-2)
+  })
 })
+
+test('测试新闻', () => {
+  process.env['INPUT_MSGTYPE'] = 'news'
+  process.env['INPUT_CONTENT'] = 'test'
+  return run().then(out => {
+    expect(out.errcode).toBe(-2)
+  })
+})
+
+test('测试文件', () => {
+  process.env['INPUT_MSGTYPE'] = 'file'
+  const filename = 'testfile-' + getTimeString() + '.md'
+  fs.writeFileSync(filename, '### Markdown 测试\n' + new Date().toTimeString())
+  process.env['INPUT_CONTENT'] = filename
+  return run().then(out => {
+    fs.unlinkSync(filename)
+    expect(out.errcode).toBe(0)
+  })
+}, 20000)
+
+test('测试空文件', () => {
+  process.env['INPUT_MSGTYPE'] = 'file'
+  const filename = 'testfile-' + getTimeString() + '.md'
+  fs.writeFileSync(filename, '')
+  process.env['INPUT_CONTENT'] = filename
+  return run().then(out => {
+    fs.unlinkSync(filename)
+    expect(out.errcode).not.toBe(0)
+  })
+}, 20000)
+
+test('测试错误 key', () => {
+  process.env['INPUT_KEY'] = '111'
+  process.env['INPUT_MSGTYPE'] = 'text'
+  process.env['INPUT_CONTENT'] = 'test'
+  return run().then(out => {
+    expect(out.errcode).not.toBe(0)
+  })
+})
+
+function getTimeString() {
+  const time = new Date()
+  return (
+    time.getFullYear().toString() +
+    (time.getMonth() + 1).toString().padStart(2, '0') +
+    time.getDate().toString().padStart(2, '0') +
+    time.getHours().toString().padStart(2, '0') +
+    time.getMinutes().toString().padStart(2, '0') +
+    time.getSeconds().toString().padStart(2, '0')
+  )
+}

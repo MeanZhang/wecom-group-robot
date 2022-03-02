@@ -1,24 +1,35 @@
-name: 'build-test'
+name: "build-test"
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
     branches:
       - main
-      - 'releases/*'
+      - dev
+      - "releases/*"
 
 jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+      LC_ALL: zh_CN.UTF-8
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          npm install
-      - run: |
-          npm run all
+      - run: yarn
+      - run: yarn all
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY }}
+      # 上传到codecov
+      - uses: codecov/codecov-action@v2
+
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+      LC_ALL: zh_CN.UTF-8
     steps:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          milliseconds: 1000
+          key: ${{ secrets.TEST_KEY }}
+          content: "test"

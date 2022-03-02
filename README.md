@@ -1,105 +1,54 @@
+# WeCom (WeChat Work) Group Robot
+
 <p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
+  <a href="https://github.com/MeanZhang/wecom-group-robot/actions/workflows/test.yml" alt="Build Test">
+    <img src="https://github.com/MeanZhang/wecom-group-robot/actions/workflows/test.yml/badge.svg">
+  </a>
+  <a href="https://github.com/MeanZhang/wecom-group-robot/releases" alt="Releases">
+    <img src="https://img.shields.io/github/v/release/MeanZhang/wecom-group-robot?include_prereleases&logo=github">
+  </a>
+  <a href="https://codecov.io/gh/MeanZhang/wecom-group-robot" alt="codecov">
+    <img src="https://codecov.io/gh/MeanZhang/wecom-group-robot/branch/main/graph/badge.svg?token=U39YQJ1KVN"/>
+  </a>
+  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot?ref=badge_shield" alt="FOSSA Status">
+    <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot.svg?type=shield"/>
+  </a>
 </p>
 
-# Create a JavaScript Action using TypeScript
+通过企业微信[群机器人](https://developer.work.weixin.qq.com/document/path/91770)发送消息。
 
-Use this template to bootstrap the creation of a TypeScript action.:rocket:
+> **暂时只支持发送文本（text）、markdown（markdown）、文件（file）！**
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
-
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
-
-## Create an action from this template
-
-Click the `Use this Template` and provide the new repo details for your action
-
-## Code in Main
-
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
-
-Install the dependencies  
-```bash
-$ npm install
-```
-
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yml
-
-The action.yml defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+## 用法
 
 ```yaml
-uses: ./
-with:
-  milliseconds: 1000
+- name: 发送到企业微信
+  uses: MeanZhang/wecom-group-robot@v1
+  with:
+    key: ${{ secrets.KEY }}
+    msgtype: "file"
+    content: "${{ secrets.APP_NAME }}.apk"
 ```
 
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
+## 参数
 
-## Usage:
+### 输入
 
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+| 参数      | 是否必填 | 说明                                                         |
+| --------- | -------- | ------------------------------------------------------------ |
+| `key`     | 是       | 机器人的 Webhook 地址中的`key`（注意不是 url），例如`"693a91f6-7xxx-4bc4-97a0-0ec2sifa5aaa"` |
+| `msgtype` | 是       | 消息类型，可填`"text"`、`"markdown"`、`"file"`               |
+| `content` | 是       | 消息内容。当`msgtype`为`"file"`时，填写文件路径              |
+
+### 输出
+
+| 参数      | 说明                         |
+| --------- | ---------------------------- |
+| `errcode` | 错误代码，若发送成功为`0`    |
+| `errmsg`  | 错误信息，若发送成功为`"ok"` |
+
+> **注意**：只有发送成功时有输出，发送失败时会报错。
+
+## 许可证
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot?ref=badge_large)

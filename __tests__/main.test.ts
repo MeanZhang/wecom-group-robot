@@ -24,7 +24,7 @@ test('测试 Markdown', () => {
 
 test('测试图片', () => {
   process.env['INPUT_MSGTYPE'] = 'image'
-  process.env['INPUT_CONTENT'] = path.join(__dirname,'test.png')
+  process.env['INPUT_CONTENT'] = path.join(__dirname, 'test.png')
   return run().then(out => {
     expect(out.errcode).toBe(0)
   })

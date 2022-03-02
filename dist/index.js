@@ -46,6 +46,7 @@ exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const form_data_1 = __importDefault(__nccwpck_require__(4334));
 const axios_1 = __importDefault(__nccwpck_require__(6545));
+const crypto_1 = __importDefault(__nccwpck_require__(6113));
 const fs_1 = __importDefault(__nccwpck_require__(7147));
 const path_1 = __importDefault(__nccwpck_require__(1017));
 function run() {
@@ -61,8 +62,14 @@ function run() {
             case 'markdown':
                 params[msgtype] = { content };
                 break;
-            // case "image":
-            //   break;
+            case 'image': {
+                const file = fs_1.default.readFileSync(content);
+                params[msgtype] = {
+                    base64: file.toString('base64'),
+                    md5: crypto_1.default.createHash('md5').update(file).digest('hex')
+                };
+                break;
+            }
             // case "news":
             //   break;
             case 'file': {
@@ -7428,6 +7435,14 @@ exports.debug = debug; // for test
 
 "use strict";
 module.exports = require("assert");
+
+/***/ }),
+
+/***/ 6113:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
 
 /***/ }),
 

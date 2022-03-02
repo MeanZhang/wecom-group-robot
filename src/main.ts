@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import FormData from 'form-data'
 import axios from 'axios'
+import crypto from 'crypto'
 import fs from 'fs'
 import path from 'path'
 
@@ -17,6 +18,10 @@ export async function run(): Promise<{errcode: number; errmsg: string}> {
     markdown?: {
       content: string
     }
+    image?: {
+      base64: string
+      md5: string
+    }
     file?: {
       media_id: string
     }
@@ -27,8 +32,14 @@ export async function run(): Promise<{errcode: number; errmsg: string}> {
     case 'markdown':
       params[msgtype] = {content}
       break
-    // case "image":
-    //   break;
+    case 'image': {
+      const file = fs.readFileSync(content)
+      params[msgtype] = {
+        base64: file.toString('base64'),
+        md5: crypto.createHash('md5').update(file).digest('hex')
+      }
+      break
+    }
     // case "news":
     //   break;
     case 'file': {

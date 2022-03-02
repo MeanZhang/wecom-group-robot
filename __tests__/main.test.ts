@@ -1,6 +1,7 @@
 import fs from 'fs'
 import {expect, test} from '@jest/globals'
 import {run} from '../src/main'
+import path from 'path'
 
 process.env['INPUT_KEY'] = process.env['TEST_KEY']
 
@@ -23,9 +24,9 @@ test('测试 Markdown', () => {
 
 test('测试图片', () => {
   process.env['INPUT_MSGTYPE'] = 'image'
-  process.env['INPUT_CONTENT'] = 'test.png'
+  process.env['INPUT_CONTENT'] = path.join(__dirname,'test.png')
   return run().then(out => {
-    expect(out.errcode).toBe(-2)
+    expect(out.errcode).toBe(0)
   })
 })
 

@@ -17,11 +17,12 @@
 
 通过企业微信[群机器人](https://developer.work.weixin.qq.com/document/path/91770)发送消息。
 
-> **暂时只支持发送文本（text）、markdown（markdown）、文件（file）！**
+> **暂时只支持发送文本（text）、markdown（markdown）、图片（image）、文件（file）！**
 
 ## 用法
 
 ```yaml
+# 发送 APK 文件
 - name: 发送到企业微信
   uses: MeanZhang/wecom-group-robot@v1
   with:
@@ -38,7 +39,7 @@
 | --------- | -------- | ------------------------------------------------------------ |
 | `key`     | 是       | 机器人的 Webhook 地址中的`key`（注意不是 url），例如`"693a91f6-7xxx-4bc4-97a0-0ec2sifa5aaa"` |
 | `msgtype` | 是       | 消息类型，可填`"text"`、`"markdown"`、`"file"`               |
-| `content` | 是       | 消息内容。当`msgtype`为`"file"`时，填写文件路径              |
+| `content` | 是       | 消息内容。当`msgtype`为`"file"`或`"image"`时，填写文件路径          |
 
 ### 输出
 

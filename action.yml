@@ -14,7 +14,7 @@ inputs:
     required: false
     default: "text"
   content:
-    description: "消息内容，当消息类型为文件（file）时，content为文件名"
+    description: "消息内容，当消息类型为文件或图片时，content为文件名"
     required: true
 outputs:
   errcode:

@@ -11,7 +11,7 @@ test('测试文本', () => {
   return run().then(out => {
     expect(out.errcode).toBe(0)
   })
-})
+}, 20000)
 
 test('测试 Markdown', () => {
   process.env['INPUT_MSGTYPE'] = 'markdown'
@@ -20,7 +20,7 @@ test('测试 Markdown', () => {
   return run().then(out => {
     expect(out.errcode).toBe(0)
   })
-})
+}, 20000)
 
 test('测试图片', () => {
   process.env['INPUT_MSGTYPE'] = 'image'
@@ -28,7 +28,7 @@ test('测试图片', () => {
   return run().then(out => {
     expect(out.errcode).toBe(0)
   })
-})
+}, 20000)
 
 test('测试新闻', () => {
   process.env['INPUT_MSGTYPE'] = 'news'
@@ -36,7 +36,7 @@ test('测试新闻', () => {
   return run().then(out => {
     expect(out.errcode).toBe(-2)
   })
-})
+}, 20000)
 
 test('测试文件', () => {
   process.env['INPUT_MSGTYPE'] = 'file'
@@ -67,7 +67,7 @@ test('测试错误 key', () => {
   return run().then(out => {
     expect(out.errcode).not.toBe(0)
   })
-})
+}, 20000)
 
 function getTimeString() {
   const time = new Date()

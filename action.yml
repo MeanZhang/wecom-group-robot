@@ -10,7 +10,7 @@ inputs:
     required: true
   # 暂不支持图片和图文
   msgtype:
-    description: "消息类型，支持文本（text）、markdown（markdown）、图片（image）、图文（news）、文件（file）"
+    description: "消息类型，支持文本（text）、markdown（markdown）、图片（image）、文件（file）"
     required: false
     default: "text"
   content:

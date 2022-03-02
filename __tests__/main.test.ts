@@ -34,7 +34,7 @@ test('测试新闻', () => {
   process.env['INPUT_MSGTYPE'] = 'news'
   process.env['INPUT_CONTENT'] = 'test'
   return run().then(out => {
-    expect(out.errcode).toBe(-2)
+    expect(out.errcode).toBe(-1)
   })
 }, 20000)
 

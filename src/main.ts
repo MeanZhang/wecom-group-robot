@@ -72,7 +72,7 @@ export async function run(): Promise<{errcode: number; errmsg: string}> {
     default:
       core.setFailed(`invalid msgtype: ${msgtype}`)
       return {
-        errcode: -2,
+        errcode: -1,
         errmsg: `invalid msgtype: ${msgtype}`
       }
   }

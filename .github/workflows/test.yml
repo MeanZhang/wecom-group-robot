@@ -20,7 +20,7 @@ jobs:
         env:
           TEST_KEY: ${{ secrets.TEST_KEY }}
       # 上传到codecov
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v3
 
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest

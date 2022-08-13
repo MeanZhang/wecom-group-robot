@@ -10,6 +10,6 @@ updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
       timezone: "Asia/Shanghai"
     target-branch: "dev"

@@ -22,5 +22,5 @@ outputs:
   errmsg:
     description: "企业微信返回的errmsg"
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"

@@ -2,6 +2,9 @@ import fs from 'fs'
 import {expect, test} from '@jest/globals'
 import {run} from '../src/main'
 import path from 'path'
+import {config} from 'dotenv'
+
+config()
 
 process.env['INPUT_KEY'] = process.env['TEST_KEY']
 

@@ -26,7 +26,7 @@
   with:
     key: ${{ secrets.KEY }}
     msgtype: "file"
-    content: "${{ secrets.APP_NAME }}.apk"
+    content: "app/build/outputs/apk/*.apk"
 ```
 
 ## 参数
@@ -37,7 +37,7 @@
 | --------- | -------- | ------------------------------------------------------------ |
 | `key`     | 是       | 机器人的 Webhook 地址中的`key`（注意不是 url），例如`"693a91f6-7xxx-4bc4-97a0-0ec2sifa5aaa"` |
 | `msgtype` | 是       | 消息类型，可填`"text"`、`"markdown"`、`"image"`、`"file"`                |
-| `content` | 是       | 消息内容。当`msgtype`为`"image"`或`"file"`时，填写文件路径          |
+| `content` | 是       | 消息内容。当`msgtype`为`"image"`时，填写文件路径，当`msgtype`为`"file"`时，填写文件路径，格式参考[@actions/glob Patterns](https://github.com/actions/toolkit/tree/main/packages/glob#glob-behavior)        |
 
 ## 许可证
 

@@ -63,6 +63,21 @@ test('测试空文件', () => {
   })
 }, 20000)
 
+test('测试文件夹', () => {
+  process.env['INPUT_MSGTYPE'] = 'file'
+  const filename = 'testfile'
+  if (!fs.existsSync(filename)) {
+    fs.mkdirSync(filename)
+  }
+  fs.writeFileSync(filename + '/test1.md', 'test1\n' + getTimeString())
+  fs.writeFileSync(filename + '/test2.md', 'test2\n' + getTimeString())
+  process.env['INPUT_CONTENT'] = filename
+  return run().then(out => {
+    expect(out.errcode).toBe(0)
+    fs.rmdirSync(filename, {recursive: true})
+  })
+}, 20000)
+
 test('测试错误 key', () => {
   process.env['INPUT_KEY'] = '111'
   process.env['INPUT_MSGTYPE'] = 'text'

@@ -47,8 +47,8 @@ test('测试文件', () => {
   fs.writeFileSync(filename, '### Markdown 测试\n' + new Date().toTimeString())
   process.env['INPUT_CONTENT'] = filename
   return run().then(out => {
-    fs.unlinkSync(filename)
     expect(out.errcode).toBe(0)
+    fs.unlinkSync(filename)
   })
 }, 20000)
 
@@ -74,7 +74,23 @@ test('测试文件夹', () => {
   process.env['INPUT_CONTENT'] = filename
   return run().then(out => {
     expect(out.errcode).toBe(0)
-    fs.rmdirSync(filename, {recursive: true})
+    fs.rmSync(filename, {recursive: true})
+  })
+}, 20000)
+
+test('测试空文件夹', () => {
+  process.env['INPUT_MSGTYPE'] = 'file'
+  const filename = 'testfile'
+  if (!fs.existsSync(filename)) {
+    fs.mkdirSync(filename)
+  } else {
+    fs.rmSync(filename, {recursive: true})
+    fs.mkdirSync(filename)
+  }
+  process.env['INPUT_CONTENT'] = filename
+  return run().then(out => {
+    expect(out.errcode).toBe(-2)
+    fs.rmSync(filename, {recursive: true})
   })
 }, 20000)
 

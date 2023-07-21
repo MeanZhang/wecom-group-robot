@@ -1,6 +1,31 @@
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 9292:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.NoFilesFound = exports.InvalidMsgtypeError = void 0;
+class InvalidMsgtypeError {
+    constructor(msgtype) {
+        this.errcode = -1;
+        this.errmsg = `invalid msgtype: ${msgtype}`;
+    }
+}
+exports.InvalidMsgtypeError = InvalidMsgtypeError;
+class NoFilesFound {
+    constructor(path) {
+        this.errcode = -2;
+        this.errmsg = `no files found in ${path}`;
+    }
+}
+exports.NoFilesFound = NoFilesFound;
+
+
+/***/ }),
+
 /***/ 3109:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -50,22 +75,42 @@ const axios_1 = __importDefault(__nccwpck_require__(8757));
 const crypto_1 = __importDefault(__nccwpck_require__(6113));
 const fs_1 = __importDefault(__nccwpck_require__(7147));
 const path_1 = __importDefault(__nccwpck_require__(1017));
+const errors_1 = __nccwpck_require__(9292);
 function isMsgType(msgtype) {
     return ['text', 'markdown', 'image', 'file'].includes(msgtype);
 }
+/**
+ * 推送文件
+ * @param paths 要推送的文件路径，支持 \@actions/glob 语法
+ * @returns {Promise<PushResult>} 推送结果
+ */
 function pushFiles(paths) {
     return __awaiter(this, void 0, void 0, function* () {
         const globber = yield glob.create(paths);
+        core.debug(`searching: ${paths}`);
         const files = yield globber.glob();
+        core.debug(`found: ${files}`);
+        for (const file_path of files) {
+            const stats = fs_1.default.statSync(file_path);
+            if (stats.isDirectory()) {
+                core.debug(`Removing ${file_path} because it is a directory`);
+                files.splice(files.indexOf(file_path), 1);
+            }
+        }
+        if (files.length === 0) {
+            core.warning(`No files were found with the provided path: ${paths}. No files will be uploaded.`);
+            return new errors_1.NoFilesFound(paths);
+        }
+        else {
+            const s = files.length === 1 ? '' : 's';
+            core.info(`With the provided path, there will be ${files.length} file${s} uploaded`);
+        }
         const key = core.getInput('key');
         for (const file_path of files) {
             const upload_url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=${key}&type=file`;
             const file = fs_1.default.createReadStream(file_path);
             const filename = path_1.default.basename(file_path);
             const stats = fs_1.default.statSync(file_path);
-            if (stats.isDirectory()) {
-                continue;
-            }
             const filelength = stats.size;
             const form = new form_data_1.default();
             form.append('file', file);
@@ -106,10 +151,7 @@ function run() {
         const msgtype = core.getInput('msgtype');
         if (!isMsgType(msgtype)) {
             core.setFailed(`invalid msgtype: ${msgtype}`);
-            return {
-                errcode: -1,
-                errmsg: `invalid msgtype: ${msgtype}`
-            };
+            return new errors_1.InvalidMsgtypeError(msgtype);
         }
         const content = core.getInput('content');
         const params = { msgtype };

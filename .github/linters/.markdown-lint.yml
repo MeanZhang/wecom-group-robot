@@ -2,6 +2,16 @@
 MD004:
   style: dash
 
+# Line length
+MD013: false
+
 # Ordered list item prefix
 MD029:
   style: one
+
+# Inline HTML
+MD033:
+  allowed_elements:
+    - p
+    - a
+    - img

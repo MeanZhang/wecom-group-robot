@@ -72,4 +72,4 @@ jobs:
 
       - name: 打印输出
         id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+        run: echo "${{ steps.test-action.outputs.errmsg }}"

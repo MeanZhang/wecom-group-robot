@@ -1,0 +1,75 @@
+name: 持续集成
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - dev
+      - 'releases/*'
+
+jobs:
+  test-typescript:
+    name: TypeScript 测试
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+      LC_ALL: zh_CN.UTF-8
+
+    steps:
+      - name: 检出
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        id: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+
+      - name: 安装依赖
+        id: yarn-install
+        run: yarn
+
+      - name: 格式检查
+        id: yarn-format-check
+        run: yarn format:check
+
+      - name: Lint
+        id: yarn-lint
+        run: yarn lint
+
+      - name: 测试
+        id: yarn-test
+        run: yarn test
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY }}
+
+      # 上传到codecov
+      - name: 上传到 Codecov
+        id: codecov
+        uses: codecov/codecov-action@v3
+
+  test-action:
+    name: GitHub Actions 测试
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+      LC_ALL: zh_CN.UTF-8
+
+    steps:
+      - name: 检出
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: 测试本地 Action
+        id: test-action
+        uses: ./
+        with:
+          key: ${{ secrets.TEST_KEY }}
+          content: 'test'
+
+      - name: 打印输出
+        id: output
+        run: echo "${{ steps.test-action.outputs.errmsg }}"

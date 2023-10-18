@@ -1,191 +1,5 @@
-require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
-
-/***/ 9292:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NoFilesFound = exports.InvalidMsgtypeError = void 0;
-class InvalidMsgtypeError {
-    constructor(msgtype) {
-        this.errcode = -1;
-        this.errmsg = `invalid msgtype: ${msgtype}`;
-    }
-}
-exports.InvalidMsgtypeError = InvalidMsgtypeError;
-class NoFilesFound {
-    constructor(path) {
-        this.errcode = -2;
-        this.errmsg = `no files found in ${path}`;
-    }
-}
-exports.NoFilesFound = NoFilesFound;
-
-
-/***/ }),
-
-/***/ 3109:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.run = void 0;
-const core = __importStar(__nccwpck_require__(2186));
-const glob = __importStar(__nccwpck_require__(8090));
-const form_data_1 = __importDefault(__nccwpck_require__(4334));
-const axios_1 = __importDefault(__nccwpck_require__(8757));
-const crypto_1 = __importDefault(__nccwpck_require__(6113));
-const fs_1 = __importDefault(__nccwpck_require__(7147));
-const path_1 = __importDefault(__nccwpck_require__(1017));
-const errors_1 = __nccwpck_require__(9292);
-function isMsgType(msgtype) {
-    return ['text', 'markdown', 'image', 'file'].includes(msgtype);
-}
-/**
- * 推送文件
- * @param paths 要推送的文件路径，支持 \@actions/glob 语法
- * @returns {Promise<PushResult>} 推送结果
- */
-function pushFiles(paths) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const globber = yield glob.create(paths);
-        core.debug(`searching: ${paths}`);
-        const files = yield globber.glob();
-        core.debug(`found: ${files}`);
-        for (const file_path of files) {
-            const stats = fs_1.default.statSync(file_path);
-            if (stats.isDirectory()) {
-                core.debug(`Removing ${file_path} because it is a directory`);
-                files.splice(files.indexOf(file_path), 1);
-            }
-        }
-        if (files.length === 0) {
-            core.warning(`No files were found with the provided path: ${paths}. No files will be uploaded.`);
-            return new errors_1.NoFilesFound(paths);
-        }
-        else {
-            const s = files.length === 1 ? '' : 's';
-            core.info(`With the provided path, there will be ${files.length} file${s} uploaded`);
-        }
-        const key = core.getInput('key');
-        for (const file_path of files) {
-            const upload_url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=${key}&type=file`;
-            const file = fs_1.default.createReadStream(file_path);
-            const filename = path_1.default.basename(file_path);
-            const stats = fs_1.default.statSync(file_path);
-            const filelength = stats.size;
-            const form = new form_data_1.default();
-            form.append('file', file);
-            const res = yield (0, axios_1.default)({
-                method: 'post',
-                url: upload_url,
-                data: form,
-                headers: {
-                    'Content-Disposition': `form-data; name="media"; filename=${filename}; filelength=${filelength}`,
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            if (res.data.errcode === 0) {
-                const params = {
-                    msgtype: 'file',
-                    file: {
-                        media_id: res.data.media_id
-                    }
-                };
-                const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
-                yield axios_1.default.post(url, params);
-            }
-            else {
-                core.setFailed(res.data);
-                return res.data;
-            }
-        }
-        return {
-            errcode: 0,
-            errmsg: 'ok'
-        };
-    });
-}
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const key = core.getInput('key');
-        const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
-        const msgtype = core.getInput('msgtype');
-        if (!isMsgType(msgtype)) {
-            core.setFailed(`invalid msgtype: ${msgtype}`);
-            return new errors_1.InvalidMsgtypeError(msgtype);
-        }
-        const content = core.getInput('content');
-        const params = { msgtype };
-        switch (msgtype) {
-            // TODO mentioned
-            case 'text':
-            case 'markdown':
-                params[msgtype] = { content };
-                break;
-            case 'image': {
-                const file = fs_1.default.readFileSync(content);
-                params[msgtype] = {
-                    base64: file.toString('base64'),
-                    md5: crypto_1.default.createHash('md5').update(file).digest('hex')
-                };
-                break;
-            }
-            // case "news":
-            //   break;
-            case 'file':
-                return pushFiles(content);
-        }
-        const response = yield axios_1.default.post(url, params);
-        if (response.data.errcode !== 0) {
-            core.setFailed(response.data);
-        }
-        return response.data;
-    });
-}
-exports.run = run;
-run();
-
-
-/***/ }),
 
 /***/ 7351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
@@ -8781,6 +8595,192 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 6976:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.NoFilesFound = exports.InvalidMsgtypeError = void 0;
+class InvalidMsgtypeError {
+    constructor(msgtype) {
+        this.errcode = -1;
+        this.errmsg = `invalid msgtype: ${msgtype}`;
+    }
+}
+exports.InvalidMsgtypeError = InvalidMsgtypeError;
+class NoFilesFound {
+    constructor(path) {
+        this.errcode = -2;
+        this.errmsg = `no files found in ${path}`;
+    }
+}
+exports.NoFilesFound = NoFilesFound;
+
+
+/***/ }),
+
+/***/ 6144:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.run = void 0;
+const core = __importStar(__nccwpck_require__(2186));
+const glob = __importStar(__nccwpck_require__(8090));
+const form_data_1 = __importDefault(__nccwpck_require__(4334));
+const axios_1 = __importDefault(__nccwpck_require__(8757));
+const crypto_1 = __importDefault(__nccwpck_require__(6113));
+const fs_1 = __importDefault(__nccwpck_require__(7147));
+const path_1 = __importDefault(__nccwpck_require__(1017));
+const errors_1 = __nccwpck_require__(6976);
+function isMsgType(msgtype) {
+    return ['text', 'markdown', 'image', 'file'].includes(msgtype);
+}
+/**
+ * 推送文件
+ * @param paths 要推送的文件路径，支持 \@actions/glob 语法
+ * @returns {Promise<PushResult>} 推送结果
+ */
+function pushFiles(paths) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const globber = yield glob.create(paths);
+        core.debug(`searching: ${paths}`);
+        const files = yield globber.glob();
+        core.debug(`found: ${files}`);
+        for (const file_path of files) {
+            const stats = fs_1.default.statSync(file_path);
+            if (stats.isDirectory()) {
+                core.debug(`Removing ${file_path} because it is a directory`);
+                files.splice(files.indexOf(file_path), 1);
+            }
+        }
+        if (files.length === 0) {
+            core.warning(`No files were found with the provided path: ${paths}. No files will be uploaded.`);
+            return new errors_1.NoFilesFound(paths);
+        }
+        else {
+            const s = files.length === 1 ? '' : 's';
+            core.info(`With the provided path, there will be ${files.length} file${s} uploaded`);
+        }
+        const key = core.getInput('key');
+        for (const file_path of files) {
+            const upload_url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=${key}&type=file`;
+            const file = fs_1.default.createReadStream(file_path);
+            const filename = path_1.default.basename(file_path);
+            const stats = fs_1.default.statSync(file_path);
+            const filelength = stats.size;
+            const form = new form_data_1.default();
+            form.append('file', file);
+            const res = yield (0, axios_1.default)({
+                method: 'post',
+                url: upload_url,
+                data: form,
+                headers: {
+                    'Content-Disposition': `form-data; name="media"; filename=${filename}; filelength=${filelength}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            if (res.data.errcode === 0) {
+                const params = {
+                    msgtype: 'file',
+                    file: {
+                        media_id: res.data.media_id
+                    }
+                };
+                const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
+                yield axios_1.default.post(url, params);
+            }
+            else {
+                core.setFailed(res.data);
+                return res.data;
+            }
+        }
+        return {
+            errcode: 0,
+            errmsg: 'ok'
+        };
+    });
+}
+function run() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const key = core.getInput('key');
+        const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
+        const msgtype = core.getInput('msgtype');
+        if (!isMsgType(msgtype)) {
+            core.setFailed(`invalid msgtype: ${msgtype}`);
+            return new errors_1.InvalidMsgtypeError(msgtype);
+        }
+        const content = core.getInput('content');
+        const params = { msgtype };
+        switch (msgtype) {
+            // TODO mentioned
+            case 'text':
+            case 'markdown':
+                params[msgtype] = { content };
+                break;
+            case 'image': {
+                const file = fs_1.default.readFileSync(content);
+                params[msgtype] = {
+                    base64: file.toString('base64'),
+                    md5: crypto_1.default.createHash('md5').update(file).digest('hex')
+                };
+                break;
+            }
+            // case "news":
+            //   break;
+            case 'file':
+                return pushFiles(content);
+        }
+        const response = yield axios_1.default.post(url, params);
+        if (response.data.errcode !== 0) {
+            core.setFailed(response.data);
+        }
+        return response.data;
+    });
+}
+exports.run = run;
+run();
+
+
+/***/ }),
+
 /***/ 9491:
 /***/ ((module) => {
 
@@ -8905,7 +8905,7 @@ module.exports = require("zlib");
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-// Axios v1.4.0 Copyright (c) 2023 Matt Zabriskie and contributors
+// Axios v1.5.0 Copyright (c) 2023 Matt Zabriskie and contributors
 
 
 const FormData$1 = __nccwpck_require__(4334);
@@ -9475,8 +9475,9 @@ const reduceDescriptors = (obj, reducer) => {
   const reducedDescriptors = {};
 
   forEach(descriptors, (descriptor, name) => {
-    if (reducer(descriptor, name, obj) !== false) {
-      reducedDescriptors[name] = descriptor;
+    let ret;
+    if ((ret = reducer(descriptor, name, obj)) !== false) {
+      reducedDescriptors[name] = ret || descriptor;
     }
   });
 
@@ -10260,10 +10261,6 @@ function formDataToJSON(formData) {
   return null;
 }
 
-const DEFAULT_CONTENT_TYPE = {
-  'Content-Type': undefined
-};
-
 /**
  * It takes a string, tries to parse it, and if it fails, it returns the stringified version
  * of the input
@@ -10293,7 +10290,7 @@ const defaults = {
 
   transitional: transitionalDefaults,
 
-  adapter: ['xhr', 'http'],
+  adapter: 'http' ,
 
   transformRequest: [function transformRequest(data, headers) {
     const contentType = headers.getContentType() || '';
@@ -10402,17 +10399,14 @@ const defaults = {
 
   headers: {
     common: {
-      'Accept': 'application/json, text/plain, */*'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': undefined
     }
   }
 };
 
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+utils.forEach(['delete', 'get', 'head', 'post', 'put', 'patch'], (method) => {
   defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
 });
 
 const defaults$1 = defaults;
@@ -10748,7 +10742,17 @@ class AxiosHeaders {
 
 AxiosHeaders.accessor(['Content-Type', 'Content-Length', 'Accept', 'Accept-Encoding', 'User-Agent', 'Authorization']);
 
-utils.freezeMethods(AxiosHeaders.prototype);
+// reserved names hotfix
+utils.reduceDescriptors(AxiosHeaders.prototype, ({value}, key) => {
+  let mapped = key[0].toUpperCase() + key.slice(1); // map `set` => `Set`
+  return {
+    get: () => value,
+    set(headerValue) {
+      this[mapped] = headerValue;
+    }
+  }
+});
+
 utils.freezeMethods(AxiosHeaders);
 
 const AxiosHeaders$1 = AxiosHeaders;
@@ -10868,7 +10872,7 @@ function buildFullPath(baseURL, requestedURL) {
   return requestedURL;
 }
 
-const VERSION = "1.4.0";
+const VERSION = "1.5.0";
 
 function parseProtocol(url) {
   const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
@@ -11717,10 +11721,12 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
       auth,
       protocol,
       family,
-      lookup,
       beforeRedirect: dispatchBeforeRedirect,
       beforeRedirects: {}
     };
+
+    // cacheable-lookup integration hotfix
+    !utils.isUndefined(lookup) && (options.lookup = lookup);
 
     if (config.socketPath) {
       options.socketPath = config.socketPath;
@@ -12718,15 +12724,13 @@ class Axios {
     // Set config.method
     config.method = (config.method || this.defaults.method || 'get').toLowerCase();
 
-    let contextHeaders;
-
     // Flatten headers
-    contextHeaders = headers && utils.merge(
+    let contextHeaders = headers && utils.merge(
       headers.common,
       headers[config.method]
     );
 
-    contextHeaders && utils.forEach(
+    headers && utils.forEach(
       ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
       (method) => {
         delete headers[method];
@@ -13136,6 +13140,8 @@ axios.AxiosHeaders = AxiosHeaders$1;
 
 axios.formToJSON = thing => formDataToJSON(utils.isHTMLForm(thing) ? new FormData(thing) : thing);
 
+axios.getAdapter = adapters.getAdapter;
+
 axios.HttpStatusCode = HttpStatusCode$1;
 
 axios.default = axios;
@@ -13196,9 +13202,8 @@ module.exports = JSON.parse('{"application/1d-interleaved-parityfec":{"source":"
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(3109);
+/******/ 	var __webpack_exports__ = __nccwpck_require__(6144);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=index.js.map

@@ -1,0 +1,48 @@
+name: CodeQL
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '31 7 * * 3'
+
+jobs:
+  analyze:
+    name: 分享
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      checks: write
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - TypeScript
+
+    steps:
+      - name: 检出
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: 初始化 CodeQL
+        id: initialize
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          source-root: src
+
+      - name: 自动构建
+        id: autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: 运行 CodeQL 分析
+        id: analyze
+        uses: github/codeql-action/analyze@v2

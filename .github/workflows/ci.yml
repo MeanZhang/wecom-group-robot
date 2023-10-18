@@ -43,6 +43,8 @@ jobs:
       - name: 测试
         id: yarn-test
         run: yarn test
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY }}
 
       # 上传到codecov
       - name: 上传到 Codecov

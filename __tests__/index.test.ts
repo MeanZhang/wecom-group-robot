@@ -1,8 +1,8 @@
 import fs from 'fs'
-import {expect, test} from '@jest/globals'
-import {run} from '../src'
+import { expect, test } from '@jest/globals'
+import { run } from '../src'
 import path from 'path'
-import {config} from 'dotenv'
+import { config } from 'dotenv'
 
 config()
 
@@ -77,13 +77,13 @@ test('测试空文件夹', async () => {
   if (!fs.existsSync(filename)) {
     fs.mkdirSync(filename)
   } else {
-    fs.rmSync(filename, {recursive: true})
+    fs.rmSync(filename, { recursive: true })
     fs.mkdirSync(filename)
   }
   process.env['INPUT_CONTENT'] = filename
   const out = await run()
   expect(out.errcode).toBe(-2)
-  fs.rmSync(filename, {recursive: true})
+  fs.rmSync(filename, { recursive: true })
 }, 20000)
 
 test('测试错误 key', async () => {

@@ -5,7 +5,7 @@ import axios from 'axios'
 import crypto from 'crypto'
 import fs from 'fs'
 import path from 'path'
-import {InvalidMsgtypeError, NoFilesFound, PushResult} from './errors'
+import { InvalidMsgtypeError, NoFilesFound, PushResult } from './errors'
 
 type MsgType = 'text' | 'markdown' | 'image' | 'file'
 
@@ -103,12 +103,12 @@ export async function run(): Promise<PushResult> {
     file?: {
       media_id: string
     }
-  } = {msgtype}
+  } = { msgtype }
   switch (msgtype) {
     // TODO mentioned
     case 'text':
     case 'markdown':
-      params[msgtype] = {content}
+      params[msgtype] = { content }
       break
     case 'image': {
       const file = fs.readFileSync(content)

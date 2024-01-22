@@ -17,9 +17,8 @@ test('测试文本', async () => {
 
 test('测试 Markdown', async () => {
   process.env['INPUT_MSGTYPE'] = 'markdown'
-  process.env[
-    'INPUT_CONTENT'
-  ] = `### Markdown 测试\n${new Date().toTimeString()}`
+  process.env['INPUT_CONTENT'] =
+    `### Markdown 测试\n${new Date().toTimeString()}`
   const out = await run()
   expect(out.errcode).toBe(0)
 }, 20000)

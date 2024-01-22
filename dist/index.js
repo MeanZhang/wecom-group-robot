@@ -8603,15 +8603,17 @@ exports["default"] = _default;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NoFilesFound = exports.InvalidMsgtypeError = void 0;
 class InvalidMsgtypeError {
+    errcode = -1;
+    errmsg;
     constructor(msgtype) {
-        this.errcode = -1;
         this.errmsg = `invalid msgtype: ${msgtype}`;
     }
 }
 exports.InvalidMsgtypeError = InvalidMsgtypeError;
 class NoFilesFound {
+    errcode = -2;
+    errmsg;
     constructor(path) {
-        this.errcode = -2;
         this.errmsg = `no files found in ${path}`;
     }
 }
@@ -8648,15 +8650,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -8678,102 +8671,98 @@ function isMsgType(msgtype) {
  * @param paths 要推送的文件路径，支持 \@actions/glob 语法
  * @returns {Promise<PushResult>} 推送结果
  */
-function pushFiles(paths) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const globber = yield glob.create(paths);
-        core.debug(`searching: ${paths}`);
-        const files = yield globber.glob();
-        core.debug(`found: ${files}`);
-        for (const file_path of files) {
-            const stats = fs_1.default.statSync(file_path);
-            if (stats.isDirectory()) {
-                core.debug(`Removing ${file_path} because it is a directory`);
-                files.splice(files.indexOf(file_path), 1);
-            }
+async function pushFiles(paths) {
+    const globber = await glob.create(paths);
+    core.debug(`searching: ${paths}`);
+    const files = await globber.glob();
+    core.debug(`found: ${files}`);
+    for (const file_path of files) {
+        const stats = fs_1.default.statSync(file_path);
+        if (stats.isDirectory()) {
+            core.debug(`Removing ${file_path} because it is a directory`);
+            files.splice(files.indexOf(file_path), 1);
         }
-        if (files.length === 0) {
-            core.warning(`No files were found with the provided path: ${paths}. No files will be uploaded.`);
-            return new errors_1.NoFilesFound(paths);
+    }
+    if (files.length === 0) {
+        core.warning(`No files were found with the provided path: ${paths}. No files will be uploaded.`);
+        return new errors_1.NoFilesFound(paths);
+    }
+    else {
+        const s = files.length === 1 ? '' : 's';
+        core.info(`With the provided path, there will be ${files.length} file${s} uploaded`);
+    }
+    const key = core.getInput('key');
+    for (const file_path of files) {
+        const upload_url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=${key}&type=file`;
+        const file = fs_1.default.createReadStream(file_path);
+        const filename = path_1.default.basename(file_path);
+        const stats = fs_1.default.statSync(file_path);
+        const filelength = stats.size;
+        const form = new form_data_1.default();
+        form.append('file', file);
+        const res = await (0, axios_1.default)({
+            method: 'post',
+            url: upload_url,
+            data: form,
+            headers: {
+                'Content-Disposition': `form-data; name="media"; filename=${filename}; filelength=${filelength}`,
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        if (res.data.errcode === 0) {
+            const params = {
+                msgtype: 'file',
+                file: {
+                    media_id: res.data.media_id
+                }
+            };
+            const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
+            await axios_1.default.post(url, params);
         }
         else {
-            const s = files.length === 1 ? '' : 's';
-            core.info(`With the provided path, there will be ${files.length} file${s} uploaded`);
+            core.setFailed(res.data);
+            return res.data;
         }
-        const key = core.getInput('key');
-        for (const file_path of files) {
-            const upload_url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=${key}&type=file`;
-            const file = fs_1.default.createReadStream(file_path);
-            const filename = path_1.default.basename(file_path);
-            const stats = fs_1.default.statSync(file_path);
-            const filelength = stats.size;
-            const form = new form_data_1.default();
-            form.append('file', file);
-            const res = yield (0, axios_1.default)({
-                method: 'post',
-                url: upload_url,
-                data: form,
-                headers: {
-                    'Content-Disposition': `form-data; name="media"; filename=${filename}; filelength=${filelength}`,
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            if (res.data.errcode === 0) {
-                const params = {
-                    msgtype: 'file',
-                    file: {
-                        media_id: res.data.media_id
-                    }
-                };
-                const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
-                yield axios_1.default.post(url, params);
-            }
-            else {
-                core.setFailed(res.data);
-                return res.data;
-            }
-        }
-        return {
-            errcode: 0,
-            errmsg: 'ok'
-        };
-    });
+    }
+    return {
+        errcode: 0,
+        errmsg: 'ok'
+    };
 }
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const key = core.getInput('key');
-        const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
-        const msgtype = core.getInput('msgtype');
-        if (!isMsgType(msgtype)) {
-            core.setFailed(`invalid msgtype: ${msgtype}`);
-            return new errors_1.InvalidMsgtypeError(msgtype);
+async function run() {
+    const key = core.getInput('key');
+    const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`;
+    const msgtype = core.getInput('msgtype');
+    if (!isMsgType(msgtype)) {
+        core.setFailed(`invalid msgtype: ${msgtype}`);
+        return new errors_1.InvalidMsgtypeError(msgtype);
+    }
+    const content = core.getInput('content');
+    const params = { msgtype };
+    switch (msgtype) {
+        // TODO mentioned
+        case 'text':
+        case 'markdown':
+            params[msgtype] = { content };
+            break;
+        case 'image': {
+            const file = fs_1.default.readFileSync(content);
+            params[msgtype] = {
+                base64: file.toString('base64'),
+                md5: crypto_1.default.createHash('md5').update(file).digest('hex')
+            };
+            break;
         }
-        const content = core.getInput('content');
-        const params = { msgtype };
-        switch (msgtype) {
-            // TODO mentioned
-            case 'text':
-            case 'markdown':
-                params[msgtype] = { content };
-                break;
-            case 'image': {
-                const file = fs_1.default.readFileSync(content);
-                params[msgtype] = {
-                    base64: file.toString('base64'),
-                    md5: crypto_1.default.createHash('md5').update(file).digest('hex')
-                };
-                break;
-            }
-            // case "news":
-            //   break;
-            case 'file':
-                return pushFiles(content);
-        }
-        const response = yield axios_1.default.post(url, params);
-        if (response.data.errcode !== 0) {
-            core.setFailed(response.data);
-        }
-        return response.data;
-    });
+        // case "news":
+        //   break;
+        case 'file':
+            return pushFiles(content);
+    }
+    const response = await axios_1.default.post(url, params);
+    if (response.data.errcode !== 0) {
+        core.setFailed(response.data);
+    }
+    return response.data;
 }
 exports.run = run;
 run();

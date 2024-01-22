@@ -4,14 +4,14 @@ updates:
     directory: /
     schedule:
       interval: monthly
-      timezone: "Asia/Shanghai"
-      time: "09:00"
-    target-branch: "dev"
+      timezone: 'Asia/Shanghai'
+      time: '09:00'
+    target-branch: 'dev'
 
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: monthly
-      timezone: "Asia/Shanghai"
-      time: "09:00"
-    target-branch: "dev"
+      timezone: 'Asia/Shanghai'
+      time: '09:00'
+    target-branch: 'dev'

@@ -49,7 +49,7 @@ jobs:
       # 上传到codecov
       - name: 上传到 Codecov
         id: codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
 
   test-action:
     name: GitHub Actions 测试

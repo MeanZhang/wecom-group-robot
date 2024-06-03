@@ -1,17 +1,17 @@
 # WeCom (WeChat Work) Group Robot
 
 <p align="center">
-  <a href="https://github.com/MeanZhang/wecom-group-robot/actions/workflows/test.yml" alt="Build Test">
-    <img src="https://github.com/MeanZhang/wecom-group-robot/actions/workflows/test.yml/badge.svg">
+  <a href="https://github.com/MeanZhang/wecom-group-robot/actions/workflows/ci.yml" alt="CI">
+    <img src="https://github.com/MeanZhang/wecom-group-robot/actions/workflows/ci.yml/badge.svg" alt="CI"/>
   </a>
   <a href="https://github.com/MeanZhang/wecom-group-robot/releases" alt="Releases">
-    <img src="https://img.shields.io/github/v/release/MeanZhang/wecom-group-robot?include_prereleases&logo=github">
+    <img src="https://img.shields.io/github/v/release/MeanZhang/wecom-group-robot?include_prereleases&logo=github" alt="Releases"/>
   </a>
   <a href="https://codecov.io/gh/MeanZhang/wecom-group-robot" alt="codecov">
-    <img src="https://codecov.io/gh/MeanZhang/wecom-group-robot/branch/main/graph/badge.svg?token=U39YQJ1KVN"/>
+    <img src="https://codecov.io/gh/MeanZhang/wecom-group-robot/branch/main/graph/badge.svg?token=U39YQJ1KVN" alt="codecov"/>
   </a>
   <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot?ref=badge_shield" alt="FOSSA Status">
-    <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot.svg?type=shield"/>
+    <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FMeanZhang%2Fwecom-group-robot.svg?type=shield" alt="FOSSA Status"/>
   </a>
 </p>
 

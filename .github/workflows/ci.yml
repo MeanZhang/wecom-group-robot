@@ -8,6 +8,9 @@ on:
       - dev
       - 'releases/*'
 
+permissions:
+  contents: read
+
 jobs:
   test-typescript:
     name: TypeScript 测试
@@ -25,7 +28,7 @@ jobs:
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .node-version
           cache: yarn
 
       - name: 安装依赖

@@ -8,35 +8,37 @@ on:
     branches-ignore:
       - main
 
+permissions:
+  contents: read
+  packages: read
+  statuses: write
+
 jobs:
   lint:
-    name: Lint Code Base
+    name: Lint Codebase
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-      statuses: write
 
     steps:
       - name: 检出
         id: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: 设置 Node.js
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .node-version
           cache: yarn
 
       - name: 安装依赖
-        id: yarn-install
+        id: install
         run: yarn
 
-      - name: Lint Code Base
+      - name: Lint Codebase
         id: super-linter
-        uses: super-linter/super-linter/slim@v5
+        uses: super-linter/super-linter/slim@v6
         env:
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: dist/**/*

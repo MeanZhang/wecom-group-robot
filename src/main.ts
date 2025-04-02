@@ -5,7 +5,7 @@ import axios from 'axios'
 import crypto from 'crypto'
 import fs from 'fs'
 import path from 'path'
-import { InvalidMsgtypeError, NoFilesFound, PushResult } from './errors'
+import { InvalidMsgtypeError, NoFilesFound, PushResult } from './errors.js'
 
 type MsgType = 'text' | 'markdown' | 'image' | 'file'
 
@@ -69,7 +69,7 @@ async function pushFiles(paths: string): Promise<PushResult> {
       const url = `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${key}`
       await axios.post(url, params)
     } else {
-      core.setFailed(res.data)
+      core.setFailed(res.data.errmsg)
       return res.data
     }
   }
@@ -125,7 +125,7 @@ export async function run(): Promise<PushResult> {
   }
   const response = await axios.post(url, params)
   if (response.data.errcode !== 0) {
-    core.setFailed(response.data)
+    core.setFailed(response.data.errmsg)
   }
   return response.data
 }

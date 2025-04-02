@@ -9,15 +9,14 @@
 name: 检查 dist/
 
 on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
   push:
     branches:
       - main
     paths-ignore:
       - '**.md'
-  pull_request:
-    paths-ignore:
-      - '**.md'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -36,17 +35,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
-          cache: yarn
+          cache: pnpm
 
       - name: 安装依赖
-        id: yarn-install
-        run: yarn
+        id: pnpm-install
+        run: pnpm install
 
       - name: 构建 dist/ 目录
         id: build
-        run: yarn bundle
+        run: pnpm bundle
 
-      - name: Compare Expected and Actual Directories
+      # This will fail the workflow if the `dist/` directory is different than
+      # expected.
+      - name: Compare Directories
         id: diff
         run: |
           if [ ! -d dist/ ]; then
@@ -59,7 +60,6 @@ jobs:
             git diff --ignore-space-at-eol --text dist/
             exit 1
           fi
-
       # If `dist/` was different than expected, upload the expected version as a
       # workflow artifact.
       - if: ${{ failure() && steps.diff.outcome == 'failure' }}

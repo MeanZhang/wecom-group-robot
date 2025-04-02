@@ -29,30 +29,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
-          cache: yarn
+          cache: pnpm
 
       - name: 安装依赖
-        id: yarn-install
-        run: yarn
+        id: pnpm-install
+        run: pnpm install
 
       - name: 格式检查
-        id: yarn-format-check
-        run: yarn format:check
+        id: pnpm-format-check
+        run: pnpm format:check
 
       - name: Lint
-        id: yarn-lint
-        run: yarn lint
+        id: pnpm-lint
+        run: pnpm lint
 
       - name: 测试
-        id: yarn-test
-        run: yarn test
+        id: pnpm-ci-test
+        run: pnpm ci-test
         env:
           TEST_KEY: ${{ secrets.TEST_KEY }}
-
-      # 上传到codecov
-      - name: 上传到 Codecov
-        id: codecov
-        uses: codecov/codecov-action@v5
 
   test-action:
     name: GitHub Actions 测试

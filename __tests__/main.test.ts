@@ -1,17 +1,20 @@
 import fs from 'fs'
-import { expect, test } from '@jest/globals'
+import { expect, test } from 'vitest'
 import { run } from '../src/main'
 import path from 'path'
 import { config } from 'dotenv'
 import * as core from '@actions/core'
+import { vitest } from 'vitest'
 
 config()
 
 process.env['INPUT_KEY'] = process.env['TEST_KEY']
 
-jest.spyOn(core, 'setFailed').mockImplementation((message: string | Error) => {
-  console.debug('::error::', message)
-})
+vitest
+  .spyOn(core, 'setFailed')
+  .mockImplementation((message: string | Error) => {
+    console.debug('::error::', message)
+  })
 
 test('测试文本', async () => {
   process.env['INPUT_MSGTYPE'] = 'text'

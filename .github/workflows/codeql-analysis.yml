@@ -10,16 +10,16 @@ on:
   schedule:
     - cron: '31 7 * * 3'
 
+permissions:
+  actions: read
+  checks: write
+  contents: read
+  security-events: write
+
 jobs:
   analyze:
-    name: 分享
+    name: 分析
     runs-on: ubuntu-latest
-
-    permissions:
-      actions: read
-      checks: write
-      contents: read
-      security-events: write
 
     strategy:
       fail-fast: false
@@ -34,15 +34,15 @@ jobs:
 
       - name: 初始化 CodeQL
         id: initialize
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
           source-root: src
 
       - name: 自动构建
         id: autobuild
-        uses: github/codeql-action/autobuild@v2
+        uses: github/codeql-action/autobuild@v3
 
       - name: 运行 CodeQL 分析
         id: analyze
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3

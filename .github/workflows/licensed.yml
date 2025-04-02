@@ -1,0 +1,79 @@
+# This workflow checks the statuses of cached dependencies used in this action
+# with the help of the Licensed tool. If any licenses are invalid or missing,
+# this workflow will fail. See: https://github.com/licensee/licensed
+
+name: Licensed
+
+on:
+  # Uncomment the below lines to run this workflow on pull requests and pushes
+  # to the default branch. This is useful for checking licenses before merging
+  # changes into the default branch.
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  licensed:
+    name: 检查 Licenses
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 设置 Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: 安装依赖
+        id: pnpm-install
+        run: pnpm install
+
+      - name: 设置 Ruby
+        id: setup-ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+
+      - uses: licensee/setup-licensed@v1.3.2
+        with:
+          version: 4.x
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # If this is a workflow_dispatch event, update the cached licenses.
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        name: 更新 Licenses
+        id: update-licenses
+        run: licensed cache
+
+      # Then, commit the updated licenses to the repository.
+      - if: ${{ github.event_name == 'workflow_dispatch' }}
+        name: 提交 Licenses
+        id: commit-licenses
+        run: |
+          git config --local user.email "licensed-ci@users.noreply.github.com"
+          git config --local user.name "licensed-ci"
+          git add .
+          git commit -m "Auto-update license files"
+          git push
+
+      # Last, check the status of the cached licenses.
+      - name: 检查 Licenses
+        id: check-licenses
+        run: licensed status

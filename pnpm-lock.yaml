@@ -355,28 +355,28 @@ packages:
     resolution:
       {
         integrity: sha512-H+N/FqT07NmLmt6OFFtDfwe8PNygprzBikrEMyQfgqSmT0vzE515Pz7R8izwB9q/zsH/MA64AKoul3sA6/CzVg==,
-        tarball: http://repo.nju.edu.cn/npm/@emnapi/core/-/core-1.4.0.tgz
+        tarball: https://registry.npmmirror.com/@emnapi/core/-/core-1.4.0.tgz
       }
 
   '@emnapi/runtime@1.4.0':
     resolution:
       {
         integrity: sha512-64WYIf4UYcdLnbKn/umDlNjQDSS8AgZrI/R9+x5ilkUVFxXcA1Ebl+gQLc/6mERA4407Xof0R7wEyEuj091CVw==,
-        tarball: http://repo.nju.edu.cn/npm/@emnapi/runtime/-/runtime-1.4.0.tgz
+        tarball: https://registry.npmmirror.com/@emnapi/runtime/-/runtime-1.4.0.tgz
       }
 
   '@emnapi/wasi-threads@1.0.1':
     resolution:
       {
         integrity: sha512-iIBu7mwkq4UQGeMEM8bLwNK962nXdhodeScX4slfQnRhEMMzvYivHhutCIk8uojvmASXXPC2WNEjwxFWk72Oqw==,
-        tarball: http://repo.nju.edu.cn/npm/@emnapi/wasi-threads/-/wasi-threads-1.0.1.tgz
+        tarball: https://registry.npmmirror.com/@emnapi/wasi-threads/-/wasi-threads-1.0.1.tgz
       }
 
   '@esbuild/aix-ppc64@0.25.2':
     resolution:
       {
         integrity: sha512-wCIboOL2yXZym2cgm6mlA742s9QeJ8DjGVaL39dLN4rRwrOgOyYSnOaFPhKZGLb2ngj4EyfAFjsNJwPXZvseag==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/aix-ppc64/-/aix-ppc64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/aix-ppc64/-/aix-ppc64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [ppc64]
@@ -386,7 +386,7 @@ packages:
     resolution:
       {
         integrity: sha512-5ZAX5xOmTligeBaeNEPnPaeEuah53Id2tX4c2CVP3JaROTH+j4fnfHCkr1PjXMd78hMst+TlkfKcW/DlTq0i4w==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/android-arm64/-/android-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/android-arm64/-/android-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -396,7 +396,7 @@ packages:
     resolution:
       {
         integrity: sha512-NQhH7jFstVY5x8CKbcfa166GoV0EFkaPkCKBQkdPJFvo5u+nGXLEH/ooniLb3QI8Fk58YAx7nsPLozUWfCBOJA==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/android-arm/-/android-arm-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/android-arm/-/android-arm-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm]
@@ -406,7 +406,7 @@ packages:
     resolution:
       {
         integrity: sha512-Ffcx+nnma8Sge4jzddPHCZVRvIfQ0kMsUsCMcJRHkGJ1cDmhe4SsrYIjLUKn1xpHZybmOqCWwB0zQvsjdEHtkg==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/android-x64/-/android-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/android-x64/-/android-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -416,7 +416,7 @@ packages:
     resolution:
       {
         integrity: sha512-MpM6LUVTXAzOvN4KbjzU/q5smzryuoNjlriAIx+06RpecwCkL9JpenNzpKd2YMzLJFOdPqBpuub6eVRP5IgiSA==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/darwin-arm64/-/darwin-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/darwin-arm64/-/darwin-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -426,7 +426,7 @@ packages:
     resolution:
       {
         integrity: sha512-5eRPrTX7wFyuWe8FqEFPG2cU0+butQQVNcT4sVipqjLYQjjh8a8+vUTfgBKM88ObB85ahsnTwF7PSIt6PG+QkA==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/darwin-x64/-/darwin-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/darwin-x64/-/darwin-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -436,7 +436,7 @@ packages:
     resolution:
       {
         integrity: sha512-mLwm4vXKiQ2UTSX4+ImyiPdiHjiZhIaE9QvC7sw0tZ6HoNMjYAqQpGyui5VRIi5sGd+uWq940gdCbY3VLvsO1w==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/freebsd-arm64/-/freebsd-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -446,7 +446,7 @@ packages:
     resolution:
       {
         integrity: sha512-6qyyn6TjayJSwGpm8J9QYYGQcRgc90nmfdUb0O7pp1s4lTY+9D0H9O02v5JqGApUyiHOtkz6+1hZNvNtEhbwRQ==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/freebsd-x64/-/freebsd-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/freebsd-x64/-/freebsd-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -456,7 +456,7 @@ packages:
     resolution:
       {
         integrity: sha512-gq/sjLsOyMT19I8obBISvhoYiZIAaGF8JpeXu1u8yPv8BE5HlWYobmlsfijFIZ9hIVGYkbdFhEqC0NvM4kNO0g==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-arm64/-/linux-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-arm64/-/linux-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -466,7 +466,7 @@ packages:
     resolution:
       {
         integrity: sha512-UHBRgJcmjJv5oeQF8EpTRZs/1knq6loLxTsjc3nxO9eXAPDLcWW55flrMVc97qFPbmZP31ta1AZVUKQzKTzb0g==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-arm/-/linux-arm-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-arm/-/linux-arm-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm]
@@ -476,7 +476,7 @@ packages:
     resolution:
       {
         integrity: sha512-bBYCv9obgW2cBP+2ZWfjYTU+f5cxRoGGQ5SeDbYdFCAZpYWrfjjfYwvUpP8MlKbP0nwZ5gyOU/0aUzZ5HWPuvQ==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-ia32/-/linux-ia32-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-ia32/-/linux-ia32-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [ia32]
@@ -486,7 +486,7 @@ packages:
     resolution:
       {
         integrity: sha512-SHNGiKtvnU2dBlM5D8CXRFdd+6etgZ9dXfaPCeJtz+37PIUlixvlIhI23L5khKXs3DIzAn9V8v+qb1TRKrgT5w==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-loong64/-/linux-loong64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-loong64/-/linux-loong64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [loong64]
@@ -496,7 +496,7 @@ packages:
     resolution:
       {
         integrity: sha512-hDDRlzE6rPeoj+5fsADqdUZl1OzqDYow4TB4Y/3PlKBD0ph1e6uPHzIQcv2Z65u2K0kpeByIyAjCmjn1hJgG0Q==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-mips64el/-/linux-mips64el-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-mips64el/-/linux-mips64el-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [mips64el]
@@ -506,7 +506,7 @@ packages:
     resolution:
       {
         integrity: sha512-tsHu2RRSWzipmUi9UBDEzc0nLc4HtpZEI5Ba+Omms5456x5WaNuiG3u7xh5AO6sipnJ9r4cRWQB2tUjPyIkc6g==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-ppc64/-/linux-ppc64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-ppc64/-/linux-ppc64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [ppc64]
@@ -516,7 +516,7 @@ packages:
     resolution:
       {
         integrity: sha512-k4LtpgV7NJQOml/10uPU0s4SAXGnowi5qBSjaLWMojNCUICNu7TshqHLAEbkBdAszL5TabfvQ48kK84hyFzjnw==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-riscv64/-/linux-riscv64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-riscv64/-/linux-riscv64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [riscv64]
@@ -526,7 +526,7 @@ packages:
     resolution:
       {
         integrity: sha512-GRa4IshOdvKY7M/rDpRR3gkiTNp34M0eLTaC1a08gNrh4u488aPhuZOCpkF6+2wl3zAN7L7XIpOFBhnaE3/Q8Q==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-s390x/-/linux-s390x-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-s390x/-/linux-s390x-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [s390x]
@@ -536,7 +536,7 @@ packages:
     resolution:
       {
         integrity: sha512-QInHERlqpTTZ4FRB0fROQWXcYRD64lAoiegezDunLpalZMjcUcld3YzZmVJ2H/Cp0wJRZ8Xtjtj0cEHhYc/uUg==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/linux-x64/-/linux-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/linux-x64/-/linux-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -546,7 +546,7 @@ packages:
     resolution:
       {
         integrity: sha512-talAIBoY5M8vHc6EeI2WW9d/CkiO9MQJ0IOWX8hrLhxGbro/vBXJvaQXefW2cP0z0nQVTdQ/eNyGFV1GSKrxfw==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/netbsd-arm64/-/netbsd-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/netbsd-arm64/-/netbsd-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -556,7 +556,7 @@ packages:
     resolution:
       {
         integrity: sha512-voZT9Z+tpOxrvfKFyfDYPc4DO4rk06qamv1a/fkuzHpiVBMOhpjK+vBmWM8J1eiB3OLSMFYNaOaBNLXGChf5tg==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/netbsd-x64/-/netbsd-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/netbsd-x64/-/netbsd-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -566,7 +566,7 @@ packages:
     resolution:
       {
         integrity: sha512-dcXYOC6NXOqcykeDlwId9kB6OkPUxOEqU+rkrYVqJbK2hagWOMrsTGsMr8+rW02M+d5Op5NNlgMmjzecaRf7Tg==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/openbsd-arm64/-/openbsd-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/openbsd-arm64/-/openbsd-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -576,7 +576,7 @@ packages:
     resolution:
       {
         integrity: sha512-t/TkWwahkH0Tsgoq1Ju7QfgGhArkGLkF1uYz8nQS/PPFlXbP5YgRpqQR3ARRiC2iXoLTWFxc6DJMSK10dVXluw==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/openbsd-x64/-/openbsd-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/openbsd-x64/-/openbsd-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -586,7 +586,7 @@ packages:
     resolution:
       {
         integrity: sha512-cfZH1co2+imVdWCjd+D1gf9NjkchVhhdpgb1q5y6Hcv9TP6Zi9ZG/beI3ig8TvwT9lH9dlxLq5MQBBgwuj4xvA==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/sunos-x64/-/sunos-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/sunos-x64/-/sunos-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -596,7 +596,7 @@ packages:
     resolution:
       {
         integrity: sha512-7Loyjh+D/Nx/sOTzV8vfbB3GJuHdOQyrOryFdZvPHLf42Tk9ivBU5Aedi7iyX+x6rbn2Mh68T4qq1SDqJBQO5Q==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/win32-arm64/-/win32-arm64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/win32-arm64/-/win32-arm64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [arm64]
@@ -606,7 +606,7 @@ packages:
     resolution:
       {
         integrity: sha512-WRJgsz9un0nqZJ4MfhabxaD9Ft8KioqU3JMinOTvobbX6MOSUigSBlogP8QB3uxpJDsFS6yN+3FDBdqE5lg9kg==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/win32-ia32/-/win32-ia32-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/win32-ia32/-/win32-ia32-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [ia32]
@@ -616,7 +616,7 @@ packages:
     resolution:
       {
         integrity: sha512-kM3HKb16VIXZyIeVrM1ygYmZBKybX8N4p754bw390wGO3Tf2j4L2/WYL+4suWujpgf6GBYs3jv7TyUivdd05JA==,
-        tarball: http://repo.nju.edu.cn/npm/@esbuild/win32-x64/-/win32-x64-0.25.2.tgz
+        tarball: https://registry.npmmirror.com/@esbuild/win32-x64/-/win32-x64-0.25.2.tgz
       }
     engines: { node: '>=18' }
     cpu: [x64]
@@ -682,7 +682,7 @@ packages:
     resolution:
       {
         integrity: sha512-269Z39MS6wVJtsoUl10L60WdkhJVdPG24Q4eZTH3nnF6lpvSShEK3wQjDX9JRWAUPvPh7COouPpU9IrqaZFvtQ==,
-        tarball: http://repo.nju.edu.cn/npm/@eslint/eslintrc/-/eslintrc-2.1.4.tgz
+        tarball: https://registry.npmmirror.com/@eslint/eslintrc/-/eslintrc-2.1.4.tgz
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
 
@@ -690,7 +690,7 @@ packages:
     resolution:
       {
         integrity: sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==,
-        tarball: http://repo.nju.edu.cn/npm/@eslint/eslintrc/-/eslintrc-3.3.1.tgz
+        tarball: https://registry.npmmirror.com/@eslint/eslintrc/-/eslintrc-3.3.1.tgz
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
 
@@ -698,7 +698,7 @@ packages:
     resolution:
       {
         integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==,
-        tarball: http://repo.nju.edu.cn/npm/@eslint/js/-/js-8.57.1.tgz
+        tarball: https://registry.npmmirror.com/@eslint/js/-/js-8.57.1.tgz
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
 
@@ -706,7 +706,7 @@ packages:
     resolution:
       {
         integrity: sha512-35MJ8vCPU0ZMxo7zfev2pypqTwWTofFZO6m4KAtdoFhRpLJUpHTZZ+KB3C7Hb1d7bULYwO4lJXGCi5Se+8OMbw==,
-        tarball: http://repo.nju.edu.cn/npm/@eslint/js/-/js-9.23.0.tgz
+        tarball: https://registry.npmmirror.com/@eslint/js/-/js-9.23.0.tgz
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
 
@@ -847,7 +847,7 @@ packages:
     resolution:
       {
         integrity: sha512-OBlgKdX7gin7OIq4fadsjpg+cp2ZphvAIKucHsNfTdJiqdOmOEwQd/bHi0VwNrcw5xpBJyUw6cK/QilCqy1BSg==,
-        tarball: http://repo.nju.edu.cn/npm/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.8.tgz
+        tarball: https://registry.npmmirror.com/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.8.tgz
       }
 
   '@nodelib/fs.scandir@2.1.5':
@@ -1115,7 +1115,7 @@ packages:
     resolution:
       {
         integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==,
-        tarball: http://repo.nju.edu.cn/npm/@pkgjs/parseargs/-/parseargs-0.11.0.tgz
+        tarball: https://registry.npmmirror.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz
       }
     engines: { node: '>=14' }
 
@@ -1214,7 +1214,7 @@ packages:
     resolution:
       {
         integrity: sha512-lGVys55Qb00Wvh8DMAocp5kIcaNzEFTmGhfFd88LfaogYTRKrdxgtlO5H6S49v2Nd8R2C6wLOal0qv6/kCkOwA==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.39.0.tgz
       }
     cpu: [arm]
     os: [android]
@@ -1223,7 +1223,7 @@ packages:
     resolution:
       {
         integrity: sha512-It9+M1zE31KWfqh/0cJLrrsCPiF72PoJjIChLX+rEcujVRCb4NLQ5QzFkzIZW8Kn8FTbvGQBY5TkKBau3S8cCQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.39.0.tgz
       }
     cpu: [arm64]
     os: [android]
@@ -1232,7 +1232,7 @@ packages:
     resolution:
       {
         integrity: sha512-lXQnhpFDOKDXiGxsU9/l8UEGGM65comrQuZ+lDcGUx+9YQ9dKpF3rSEGepyeR5AHZ0b5RgiligsBhWZfSSQh8Q==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.39.0.tgz
       }
     cpu: [arm64]
     os: [darwin]
@@ -1241,7 +1241,7 @@ packages:
     resolution:
       {
         integrity: sha512-mKXpNZLvtEbgu6WCkNij7CGycdw9cJi2k9v0noMb++Vab12GZjFgUXD69ilAbBh034Zwn95c2PNSz9xM7KYEAQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.39.0.tgz
       }
     cpu: [x64]
     os: [darwin]
@@ -1250,7 +1250,7 @@ packages:
     resolution:
       {
         integrity: sha512-jivRRlh2Lod/KvDZx2zUR+I4iBfHcu2V/BA2vasUtdtTN2Uk3jfcZczLa81ESHZHPHy4ih3T/W5rPFZ/hX7RtQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.39.0.tgz
       }
     cpu: [arm64]
     os: [freebsd]
@@ -1259,7 +1259,7 @@ packages:
     resolution:
       {
         integrity: sha512-8RXIWvYIRK9nO+bhVz8DwLBepcptw633gv/QT4015CpJ0Ht8punmoHU/DuEd3iw9Hr8UwUV+t+VNNuZIWYeY7Q==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.39.0.tgz
       }
     cpu: [x64]
     os: [freebsd]
@@ -1268,7 +1268,7 @@ packages:
     resolution:
       {
         integrity: sha512-mz5POx5Zu58f2xAG5RaRRhp3IZDK7zXGk5sdEDj4o96HeaXhlUwmLFzNlc4hCQi5sGdR12VDgEUqVSHer0lI9g==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.39.0.tgz
       }
     cpu: [arm]
     os: [linux]
@@ -1278,7 +1278,7 @@ packages:
     resolution:
       {
         integrity: sha512-+YDwhM6gUAyakl0CD+bMFpdmwIoRDzZYaTWV3SDRBGkMU/VpIBYXXEvkEcTagw/7VVkL2vA29zU4UVy1mP0/Yw==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.39.0.tgz
       }
     cpu: [arm]
     os: [linux]
@@ -1288,7 +1288,7 @@ packages:
     resolution:
       {
         integrity: sha512-EKf7iF7aK36eEChvlgxGnk7pdJfzfQbNvGV/+l98iiMwU23MwvmV0Ty3pJ0p5WQfm3JRHOytSIqD9LB7Bq7xdQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.39.0.tgz
       }
     cpu: [arm64]
     os: [linux]
@@ -1298,7 +1298,7 @@ packages:
     resolution:
       {
         integrity: sha512-vYanR6MtqC7Z2SNr8gzVnzUul09Wi1kZqJaek3KcIlI/wq5Xtq4ZPIZ0Mr/st/sv/NnaPwy/D4yXg5x0B3aUUA==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.39.0.tgz
       }
     cpu: [arm64]
     os: [linux]
@@ -1308,7 +1308,7 @@ packages:
     resolution:
       {
         integrity: sha512-NMRUT40+h0FBa5fb+cpxtZoGAggRem16ocVKIv5gDB5uLDgBIwrIsXlGqYbLwW8YyO3WVTk1FkFDjMETYlDqiw==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-loongarch64-gnu/-/rollup-linux-loongarch64-gnu-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-loongarch64-gnu/-/rollup-linux-loongarch64-gnu-4.39.0.tgz
       }
     cpu: [loong64]
     os: [linux]
@@ -1318,7 +1318,7 @@ packages:
     resolution:
       {
         integrity: sha512-0pCNnmxgduJ3YRt+D+kJ6Ai/r+TaePu9ZLENl+ZDV/CdVczXl95CbIiwwswu4L+K7uOIGf6tMo2vm8uadRaICQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-powerpc64le-gnu/-/rollup-linux-powerpc64le-gnu-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-powerpc64le-gnu/-/rollup-linux-powerpc64le-gnu-4.39.0.tgz
       }
     cpu: [ppc64]
     os: [linux]
@@ -1328,7 +1328,7 @@ packages:
     resolution:
       {
         integrity: sha512-t7j5Zhr7S4bBtksT73bO6c3Qa2AV/HqiGlj9+KB3gNF5upcVkx+HLgxTm8DK4OkzsOYqbdqbLKwvGMhylJCPhQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.39.0.tgz
       }
     cpu: [riscv64]
     os: [linux]
@@ -1338,7 +1338,7 @@ packages:
     resolution:
       {
         integrity: sha512-m6cwI86IvQ7M93MQ2RF5SP8tUjD39Y7rjb1qjHgYh28uAPVU8+k/xYWvxRO3/tBN2pZkSMa5RjnPuUIbrwVxeA==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.39.0.tgz
       }
     cpu: [riscv64]
     os: [linux]
@@ -1348,7 +1348,7 @@ packages:
     resolution:
       {
         integrity: sha512-iRDJd2ebMunnk2rsSBYlsptCyuINvxUfGwOUldjv5M4tpa93K8tFMeYGpNk2+Nxl+OBJnBzy2/JCscGeO507kA==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.39.0.tgz
       }
     cpu: [s390x]
     os: [linux]
@@ -1358,7 +1358,7 @@ packages:
     resolution:
       {
         integrity: sha512-t9jqYw27R6Lx0XKfEFe5vUeEJ5pF3SGIM6gTfONSMb7DuG6z6wfj2yjcoZxHg129veTqU7+wOhY6GX8wmf90dA==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.39.0.tgz
       }
     cpu: [x64]
     os: [linux]
@@ -1368,7 +1368,7 @@ packages:
     resolution:
       {
         integrity: sha512-ThFdkrFDP55AIsIZDKSBWEt/JcWlCzydbZHinZ0F/r1h83qbGeenCt/G/wG2O0reuENDD2tawfAj2s8VK7Bugg==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.39.0.tgz
       }
     cpu: [x64]
     os: [linux]
@@ -1378,7 +1378,7 @@ packages:
     resolution:
       {
         integrity: sha512-jDrLm6yUtbOg2TYB3sBF3acUnAwsIksEYjLeHL+TJv9jg+TmTwdyjnDex27jqEMakNKf3RwwPahDIt7QXCSqRQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.39.0.tgz
       }
     cpu: [arm64]
     os: [win32]
@@ -1387,7 +1387,7 @@ packages:
     resolution:
       {
         integrity: sha512-6w9uMuza+LbLCVoNKL5FSLE7yvYkq9laSd09bwS0tMjkwXrmib/4KmoJcrKhLWHvw19mwU+33ndC69T7weNNjQ==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.39.0.tgz
       }
     cpu: [ia32]
     os: [win32]
@@ -1396,7 +1396,7 @@ packages:
     resolution:
       {
         integrity: sha512-yAkUOkIKZlK5dl7u6dg897doBgLXmUHhIINM2c+sND3DZwnrdQkkSiDh7N75Ll4mM4dxSkYfXqU9fW3lLkMFug==,
-        tarball: http://repo.nju.edu.cn/npm/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.39.0.tgz
+        tarball: https://registry.npmmirror.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.39.0.tgz
       }
     cpu: [x64]
     os: [win32]
@@ -1417,7 +1417,7 @@ packages:
     resolution:
       {
         integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==,
-        tarball: http://repo.nju.edu.cn/npm/@tybys/wasm-util/-/wasm-util-0.9.0.tgz
+        tarball: https://registry.npmmirror.com/@tybys/wasm-util/-/wasm-util-0.9.0.tgz
       }
 
   '@types/estree@1.0.7':
@@ -1577,7 +1577,7 @@ packages:
     resolution:
       {
         integrity: sha512-EpRILdWr3/xDa/7MoyfO7JuBIJqpBMphtu4+80BK1bRfFcniVT74h3Z7q1+WOc92FuIAYatB1vn9TJR67sORGw==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-darwin-arm64/-/resolver-binding-darwin-arm64-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-darwin-arm64/-/resolver-binding-darwin-arm64-1.3.3.tgz
       }
     cpu: [arm64]
     os: [darwin]
@@ -1586,7 +1586,7 @@ packages:
     resolution:
       {
         integrity: sha512-ntj/g7lPyqwinMJWZ+DKHBse8HhVxswGTmNgFKJtdgGub3M3zp5BSZ3bvMP+kBT6dnYJLSVlDqdwOq1P8i0+/g==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-darwin-x64/-/resolver-binding-darwin-x64-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-darwin-x64/-/resolver-binding-darwin-x64-1.3.3.tgz
       }
     cpu: [x64]
     os: [darwin]
@@ -1595,7 +1595,7 @@ packages:
     resolution:
       {
         integrity: sha512-l6BT8f2CU821EW7U8hSUK8XPq4bmyTlt9Mn4ERrfjJNoCw0/JoHAh9amZZtV3cwC3bwwIat+GUnrcHTG9+qixw==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-freebsd-x64/-/resolver-binding-freebsd-x64-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-freebsd-x64/-/resolver-binding-freebsd-x64-1.3.3.tgz
       }
     cpu: [x64]
     os: [freebsd]
@@ -1604,7 +1604,7 @@ packages:
     resolution:
       {
         integrity: sha512-8ScEc5a4y7oE2BonRvzJ+2GSkBaYWyh0/Ko4Q25e/ix6ANpJNhwEPZvCR6GVRmsQAYMIfQvYLdM6YEN+qRjnAQ==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-arm-gnueabihf/-/resolver-binding-linux-arm-gnueabihf-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-arm-gnueabihf/-/resolver-binding-linux-arm-gnueabihf-1.3.3.tgz
       }
     cpu: [arm]
     os: [linux]
@@ -1613,7 +1613,7 @@ packages:
     resolution:
       {
         integrity: sha512-8qQ6l1VTzLNd3xb2IEXISOKwMGXDCzY/UNy/7SovFW2Sp0K3YbL7Ao7R18v6SQkLqQlhhqSBIFRk+u6+qu5R5A==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-arm-musleabihf/-/resolver-binding-linux-arm-musleabihf-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-arm-musleabihf/-/resolver-binding-linux-arm-musleabihf-1.3.3.tgz
       }
     cpu: [arm]
     os: [linux]
@@ -1622,7 +1622,7 @@ packages:
     resolution:
       {
         integrity: sha512-v81R2wjqcWXJlQY23byqYHt9221h4anQ6wwN64oMD/WAE+FmxPHFZee5bhRkNVtzqO/q7wki33VFWlhiADwUeQ==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-arm64-gnu/-/resolver-binding-linux-arm64-gnu-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-arm64-gnu/-/resolver-binding-linux-arm64-gnu-1.3.3.tgz
       }
     cpu: [arm64]
     os: [linux]
@@ -1632,7 +1632,7 @@ packages:
     resolution:
       {
         integrity: sha512-cAOx/j0u5coMg4oct/BwMzvWJdVciVauUvsd+GQB/1FZYKQZmqPy0EjJzJGbVzFc6gbnfEcSqvQE6gvbGf2N8Q==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-arm64-musl/-/resolver-binding-linux-arm64-musl-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-arm64-musl/-/resolver-binding-linux-arm64-musl-1.3.3.tgz
       }
     cpu: [arm64]
     os: [linux]
@@ -1642,7 +1642,7 @@ packages:
     resolution:
       {
         integrity: sha512-mq2blqwErgDJD4gtFDlTX/HZ7lNP8YCHYFij2gkXPtMzrXxPW1hOtxL6xg4NWxvnj4bppppb0W3s/buvM55yfg==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-ppc64-gnu/-/resolver-binding-linux-ppc64-gnu-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-ppc64-gnu/-/resolver-binding-linux-ppc64-gnu-1.3.3.tgz
       }
     cpu: [ppc64]
     os: [linux]
@@ -1652,7 +1652,7 @@ packages:
     resolution:
       {
         integrity: sha512-u0VRzfFYysarYHnztj2k2xr+eu9rmgoTUUgCCIT37Nr+j0A05Xk2c3RY8Mh5+DhCl2aYibihnaAEJHeR0UOFIQ==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-s390x-gnu/-/resolver-binding-linux-s390x-gnu-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-s390x-gnu/-/resolver-binding-linux-s390x-gnu-1.3.3.tgz
       }
     cpu: [s390x]
     os: [linux]
@@ -1662,7 +1662,7 @@ packages:
     resolution:
       {
         integrity: sha512-OrVo5ZsG29kBF0Ug95a2KidS16PqAMmQNozM6InbquOfW/udouk063e25JVLqIBhHLB2WyBnixOQ19tmeC/hIg==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-x64-gnu/-/resolver-binding-linux-x64-gnu-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-x64-gnu/-/resolver-binding-linux-x64-gnu-1.3.3.tgz
       }
     cpu: [x64]
     os: [linux]
@@ -1672,7 +1672,7 @@ packages:
     resolution:
       {
         integrity: sha512-PYnmrwZ4HMp9SkrOhqPghY/aoL+Rtd4CQbr93GlrRTjK6kDzfMfgz3UH3jt6elrQAfupa1qyr1uXzeVmoEAxUA==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-linux-x64-musl/-/resolver-binding-linux-x64-musl-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-linux-x64-musl/-/resolver-binding-linux-x64-musl-1.3.3.tgz
       }
     cpu: [x64]
     os: [linux]
@@ -1682,7 +1682,7 @@ packages:
     resolution:
       {
         integrity: sha512-81AnQY6fShmktQw4hWDUIilsKSdvr/acdJ5azAreu2IWNlaJOKphJSsUVWE+yCk6kBMoQyG9ZHCb/krb5K0PEA==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-wasm32-wasi/-/resolver-binding-wasm32-wasi-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-wasm32-wasi/-/resolver-binding-wasm32-wasi-1.3.3.tgz
       }
     engines: { node: '>=14.0.0' }
     cpu: [wasm32]
@@ -1691,7 +1691,7 @@ packages:
     resolution:
       {
         integrity: sha512-X/42BMNw7cW6xrB9syuP5RusRnWGoq+IqvJO8IDpp/BZg64J1uuIW6qA/1Cl13Y4LyLXbJVYbYNSKwR/FiHEng==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-win32-arm64-msvc/-/resolver-binding-win32-arm64-msvc-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-win32-arm64-msvc/-/resolver-binding-win32-arm64-msvc-1.3.3.tgz
       }
     cpu: [arm64]
     os: [win32]
@@ -1700,7 +1700,7 @@ packages:
     resolution:
       {
         integrity: sha512-EGNnNGQxMU5aTN7js3ETYvuw882zcO+dsVjs+DwO2j/fRVKth87C8e2GzxW1L3+iWAXMyJhvFBKRavk9Og1Z6A==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-win32-ia32-msvc/-/resolver-binding-win32-ia32-msvc-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-win32-ia32-msvc/-/resolver-binding-win32-ia32-msvc-1.3.3.tgz
       }
     cpu: [ia32]
     os: [win32]
@@ -1709,7 +1709,7 @@ packages:
     resolution:
       {
         integrity: sha512-GraLbYqOJcmW1qY3osB+2YIiD62nVf2/bVLHZmrb4t/YSUwE03l7TwcDJl08T/Tm3SVhepX8RQkpzWbag/Sb4w==,
-        tarball: http://repo.nju.edu.cn/npm/@unrs/resolver-binding-win32-x64-msvc/-/resolver-binding-win32-x64-msvc-1.3.3.tgz
+        tarball: https://registry.npmmirror.com/@unrs/resolver-binding-win32-x64-msvc/-/resolver-binding-win32-x64-msvc-1.3.3.tgz
       }
     cpu: [x64]
     os: [win32]
@@ -1994,7 +1994,7 @@ packages:
     resolution:
       {
         integrity: sha512-+gFfDkR8pj4/TrWCGUGWmJIkBwuxPS5F+a5yWjOHQt2hHvNZd5YLzadjmDUtFmMM4y429bnKLa8bYBMHcYdnQA==,
-        tarball: http://repo.nju.edu.cn/npm/bare-events/-/bare-events-2.5.4.tgz
+        tarball: https://registry.npmmirror.com/bare-events/-/bare-events-2.5.4.tgz
       }
 
   base64-js@1.5.1:
@@ -2106,7 +2106,7 @@ packages:
     resolution:
       {
         integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==,
-        tarball: http://repo.nju.edu.cn/npm/callsites/-/callsites-3.1.0.tgz
+        tarball: https://registry.npmmirror.com/callsites/-/callsites-3.1.0.tgz
       }
     engines: { node: '>=6' }
 
@@ -2399,7 +2399,7 @@ packages:
     resolution:
       {
         integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==,
-        tarball: http://repo.nju.edu.cn/npm/emoji-regex/-/emoji-regex-8.0.0.tgz
+        tarball: https://registry.npmmirror.com/emoji-regex/-/emoji-regex-8.0.0.tgz
       }
 
   emoji-regex@9.2.2:
@@ -2878,7 +2878,7 @@ packages:
     resolution:
       {
         integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==,
-        tarball: http://repo.nju.edu.cn/npm/fsevents/-/fsevents-2.3.3.tgz
+        tarball: https://registry.npmmirror.com/fsevents/-/fsevents-2.3.3.tgz
       }
     engines: { node: ^8.16.0 || ^10.6.0 || >=11.0.0 }
     os: [darwin]
@@ -2968,7 +2968,7 @@ packages:
     resolution:
       {
         integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==,
-        tarball: http://repo.nju.edu.cn/npm/globals/-/globals-11.12.0.tgz
+        tarball: https://registry.npmmirror.com/globals/-/globals-11.12.0.tgz
       }
     engines: { node: '>=4' }
 
@@ -2976,7 +2976,7 @@ packages:
     resolution:
       {
         integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==,
-        tarball: http://repo.nju.edu.cn/npm/globals/-/globals-13.24.0.tgz
+        tarball: https://registry.npmmirror.com/globals/-/globals-13.24.0.tgz
       }
     engines: { node: '>=8' }
 
@@ -2984,7 +2984,7 @@ packages:
     resolution:
       {
         integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==,
-        tarball: http://repo.nju.edu.cn/npm/globals/-/globals-14.0.0.tgz
+        tarball: https://registry.npmmirror.com/globals/-/globals-14.0.0.tgz
       }
     engines: { node: '>=18' }
 
@@ -2992,7 +2992,7 @@ packages:
     resolution:
       {
         integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==,
-        tarball: http://repo.nju.edu.cn/npm/globals/-/globals-16.0.0.tgz
+        tarball: https://registry.npmmirror.com/globals/-/globals-16.0.0.tgz
       }
     engines: { node: '>=18' }
 
@@ -3136,7 +3136,7 @@ packages:
     resolution:
       {
         integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==,
-        tarball: http://repo.nju.edu.cn/npm/import-fresh/-/import-fresh-3.3.1.tgz
+        tarball: https://registry.npmmirror.com/import-fresh/-/import-fresh-3.3.1.tgz
       }
     engines: { node: '>=6' }
 
@@ -3257,7 +3257,7 @@ packages:
     resolution:
       {
         integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==,
-        tarball: http://repo.nju.edu.cn/npm/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz
+        tarball: https://registry.npmmirror.com/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz
       }
     engines: { node: '>=8' }
 
@@ -3828,7 +3828,7 @@ packages:
     resolution:
       {
         integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==,
-        tarball: http://repo.nju.edu.cn/npm/parent-module/-/parent-module-1.0.1.tgz
+        tarball: https://registry.npmmirror.com/parent-module/-/parent-module-1.0.1.tgz
       }
     engines: { node: '>=6' }
 
@@ -4059,7 +4059,7 @@ packages:
     resolution:
       {
         integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==,
-        tarball: http://repo.nju.edu.cn/npm/resolve-from/-/resolve-from-4.0.0.tgz
+        tarball: https://registry.npmmirror.com/resolve-from/-/resolve-from-4.0.0.tgz
       }
     engines: { node: '>=4' }
 
@@ -4272,7 +4272,7 @@ packages:
     resolution:
       {
         integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==,
-        tarball: http://repo.nju.edu.cn/npm/string-width/-/string-width-4.2.3.tgz
+        tarball: https://registry.npmmirror.com/string-width/-/string-width-4.2.3.tgz
       }
     engines: { node: '>=8' }
 
@@ -4348,7 +4348,7 @@ packages:
     resolution:
       {
         integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==,
-        tarball: http://repo.nju.edu.cn/npm/strip-json-comments/-/strip-json-comments-3.1.1.tgz
+        tarball: https://registry.npmmirror.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz
       }
     engines: { node: '>=8' }
 
@@ -4810,7 +4810,7 @@ packages:
     resolution:
       {
         integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==,
-        tarball: http://repo.nju.edu.cn/npm/wrap-ansi/-/wrap-ansi-7.0.0.tgz
+        tarball: https://registry.npmmirror.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz
       }
     engines: { node: '>=10' }
 

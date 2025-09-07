@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: 检出
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 初始化 CodeQL
         id: initialize

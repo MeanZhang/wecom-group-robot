@@ -1,7 +1,7 @@
 {
   "name": "wecom-group-robot",
   "description": "Send a message through a WeCom group robot from GitHub Actions.",
-  "version": "1.0.1",
+  "version": "1.3.0",
   "author": "Mean",
   "type": "module",
   "private": true,

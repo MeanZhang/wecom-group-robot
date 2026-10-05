@@ -4,9 +4,15 @@
 MD004:
   style: dash
 
-# Disable line length for tables
-MD013:
-  tables: false
+# Line length 80 is far too short for badge URLs
+MD013: false
+
+# Inline HTML (badges use <p>/<a>/<img>)
+MD033:
+  allowed_elements:
+    - p
+    - a
+    - img
 
 # Ordered list item prefix
 MD029:
@@ -18,13 +24,6 @@ MD030:
   ol_single: 1
   ul_multi: 1
   ol_multi: 1
-
-# Inline HTML
-MD033:
-  allowed_elements:
-    - p
-    - a
-    - img
 
 # Code block style
 MD046:

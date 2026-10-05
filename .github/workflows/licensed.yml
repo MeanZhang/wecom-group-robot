@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: 检出
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 安装 pnpm
         uses: pnpm/action-setup@v4
@@ -36,7 +36,7 @@ jobs:
 
       - name: 设置 Node.js
         id: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: .node-version
           cache: pnpm

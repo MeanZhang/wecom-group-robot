@@ -4,9 +4,8 @@
 MD004:
   style: dash
 
-# Disable line length for tables
-MD013:
-  tables: false
+# Line length 80 is far too short
+MD013: false
 
 # Ordered list item prefix
 MD029:

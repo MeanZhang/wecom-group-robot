@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: monthly
       timezone: 'Asia/Shanghai'
-      time: '09:00'
+      time: '19:00'
     target-branch: 'dev'
 
   - package-ecosystem: npm
@@ -13,5 +13,5 @@ updates:
     schedule:
       interval: monthly
       timezone: 'Asia/Shanghai'
-      time: '09:00'
+      time: '19:00'
     target-branch: 'dev'
